@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.actionAdd){
-            // TODO aqui o fragment
+            EditDialogInput.show(getSupportFragmentManager(), new EditDialogInput.OnTextListener() {
+                @Override
+                public void onAddItem(String text) {
+                    Toast.makeText(MainActivity.this, "oi " + text, Toast.LENGTH_SHORT).show();
+                    // TODO fazer adicionar na list
+                }
+            });
             return true;
         } else {
             Toast.makeText(this, "Não foi possivel encontrar a opcao escolhida", Toast.LENGTH_SHORT).show();
