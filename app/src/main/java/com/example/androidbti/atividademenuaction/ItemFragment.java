@@ -3,7 +3,9 @@ package com.example.androidbti.atividademenuaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,12 +14,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class ItemFragment extends ListFragment implements View.OnLongClickListener, ActionMode.Callback {
+public class ItemFragment extends ListFragment  {
 
     ArrayAdapter<Item> adapterItens;
     private onItemCLick listener;
 
-    private boolean isActionModeActive;
+
 
     @Override
     public void onAttach(Context context) {
@@ -32,6 +34,9 @@ public class ItemFragment extends ListFragment implements View.OnLongClickListen
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         adapterItens = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1);
+        Item item = new Item();
+        item.setNome("teste");
+        adapterItens.add(item);
 
         setListAdapter(adapterItens);
 
@@ -45,7 +50,7 @@ public class ItemFragment extends ListFragment implements View.OnLongClickListen
         }
     }
 
-    @Override
+    /*@Override
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
         getMenuInflater().inflate(R.menu.itens_menu, menu); // Com erro aqui
         return true;
@@ -77,11 +82,12 @@ public class ItemFragment extends ListFragment implements View.OnLongClickListen
     @Override
     public boolean onLongClick(View v) {
         if(!isActionModeActive){
-            startActionMode(this); // Com erro aqui
+            //startActionMode(this); // Com erro aqui
             isActionModeActive = true;
         }
         return true;
-    }
+    }*/
+
 
     public interface onItemCLick{
         void onClick(Item item);
