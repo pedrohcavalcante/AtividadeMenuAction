@@ -47,7 +47,7 @@ public class ItemFragment extends ListFragment implements View.OnLongClickListen
 
     @Override
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-        getMenuInflater().inflate(R.menu.itens_menu, menu);
+        getMenuInflater().inflate(R.menu.itens_menu, menu); // Com erro aqui
         return true;
     }
 
@@ -77,7 +77,7 @@ public class ItemFragment extends ListFragment implements View.OnLongClickListen
     @Override
     public boolean onLongClick(View v) {
         if(!isActionModeActive){
-            startActionMode(this);
+            startActionMode(this); // Com erro aqui
             isActionModeActive = true;
         }
         return true;
